@@ -9,12 +9,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
 import reducer from './reducers';
-import { logIn, logOut } from './actions/auth'
 
 let store = createStore(reducer, applyMiddleware(logger));
-
-store.dispatch(logIn('eugen', 13));
-store.dispatch(logOut());
 
 render(
   <Provider store={store}>
