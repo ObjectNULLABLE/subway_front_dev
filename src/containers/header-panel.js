@@ -1,26 +1,96 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
+
 import '../App.css';
 
-import { Toolbar, ToolbarTitle, ToolbarGroup } from 'material-ui/Toolbar';
-import FlatButton from 'material-ui/FlatButton';
+import { Menu, Button, Header, Modal, Form } from 'semantic-ui-react';
 
 export default class HeaderPanel extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoginModalOpen: false
+    };
+  }
+
+  handleOpen = () => {
+    this.setState({ isLoginModalOpen: true });
+  };
+
+  handleClose = () => {
+    this.setState({ isLoginModalOpen: false });
+  };
+
+  renderLoginDialog() {
+    return (
+      <Modal
+        open={this.state.isLoginModalOpen}
+        onClose={this.handleClose}
+        dimmer='blurring'
+        size='mini'
+      >
+        <Modal.Header>Login</Modal.Header>
+        <Modal.Content>
+          <Form size='large'>
+            <Form.Input
+              fluid
+              icon='user'
+              iconPosition='left'
+              placeholder='E-mail address'
+            />
+            <Form.Input
+              fluid
+              icon='lock'
+              iconPosition='left'
+              placeholder='Password'
+              type='password'
+            />
+            <Button color='teal' fluid size='large' onClick={this.handleClose} >Login</Button>
+          </Form>
+        </Modal.Content>
+      </Modal>
+    )
+  }
+
   render() {
     return (
-      <Toolbar className="Header-panel">
-        <ToolbarGroup>
-          <ToolbarTitle text='Subway' />
+      <div>
+        <Menu secondary size='large' className='Header-panel'>
+          <Menu.Item header as={Link} to="/">
+            <Header size='huge'>Subway</Header>
+          </Menu.Item>
+
+          <Menu.Item>
+            <Button as={Link} to="/menu">Menu</Button>
+          </Menu.Item>
+
+          <Menu.Item>
+            <Button as={Link} to="/events">Events</Button>
+          </Menu.Item>
+
+          <Menu.Item>
+            <Button as={Link} to="/gallery">Gallery</Button>
+          </Menu.Item>
+
+          <Menu.Item>
+            <Button as={Link} to="/about">About</Button>
+          </Menu.Item>
+
+          <Menu.Menu position='right'>
+            <Menu.Item>
+              <Button as={Link} to="/registration">Register</Button>
+            </Menu.Item>
+
+            <Menu.Item>
+              <Button onClick={this.handleOpen} >Login</Button>
+            </Menu.Item>
+          </Menu.Menu>
+        </Menu>
         
-          <FlatButton label='Menu' primary={true} />
-          <FlatButton label='Events' primary={true} />
-          <FlatButton label='Gallery' primary={true} />
-          <FlatButton label='About' primary={true} />
-        </ToolbarGroup>
-        <ToolbarGroup>
-          <FlatButton label='Register' primary={true} />
-          <FlatButton label='Login' primary={true} />
-        </ToolbarGroup>
-      </Toolbar>
+        {this.renderLoginDialog()}
+      </div>
     )
   }
 }

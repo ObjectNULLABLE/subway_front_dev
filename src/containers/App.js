@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import '../App.css';
 
-import HomePage from './home-page';
+import HomePage from '../components/home-page';
+import Menu from '../components/menu'
 import HeaderPanel from './header-panel';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RegForm from './registration-form';
 
 class App extends Component {
   render() {
     return (
-      <Router>
-        <MuiThemeProvider>
-          <div>
-            <HeaderPanel />
-            <Route exact path="/" component={HomePage} />
-          </div>
-        </MuiThemeProvider>
-      </Router>
+      <div>
+        <HeaderPanel />
+        <Route exact path="/" component={HomePage} />
+        <Route path="/menu" component={Menu} />
+        {/* <Route path="/events" component={Events} />
+            <Route path="/gallery" component={Gallery} />
+            <Route path="/about" component={About} /> */}
+        <Route path="/registration" component={RegForm}/>
+      </div>
     );
   }
 }
