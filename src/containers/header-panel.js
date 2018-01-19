@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 import '../App.css';
 
 import { Menu, Button, Header, Modal, Form } from 'semantic-ui-react';
+import LoginForm from '../components/login-form';
+
 
 export default class HeaderPanel extends Component {
 
@@ -31,9 +33,9 @@ export default class HeaderPanel extends Component {
         dimmer='blurring'
         size='mini'
       >
-        <Modal.Header>Login</Modal.Header>
+        <Modal.Header>Log-in to your account</Modal.Header>
         <Modal.Content>
-          <Form size='large'>
+          {/* <Form size='large'>
             <Form.Input
               fluid
               icon='user'
@@ -48,7 +50,8 @@ export default class HeaderPanel extends Component {
               type='password'
             />
             <Button color='teal' fluid size='large' onClick={this.handleClose} >Login</Button>
-          </Form>
+          </Form> */}
+          <LoginForm handleClose={this.handleClose} buttonColor='teal' />
         </Modal.Content>
       </Modal>
     )
@@ -88,7 +91,7 @@ export default class HeaderPanel extends Component {
             </Menu.Item>
           </Menu.Menu>
         </Menu>
-        
+
         {this.renderLoginDialog()}
       </div>
     )
