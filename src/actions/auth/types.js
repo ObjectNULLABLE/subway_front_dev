@@ -1,2 +1,3 @@
-export const AUTH_LOGIN = 'AUTH_LOGIN';
-export const AUTH_LOGOUT = 'AUTH_LOGOUT'
+export const FETCH_USER = 'FETCH_USER';
+export const SET_USER = 'SET_USER';
+export const PURGE_USER = 'PURGE_USER';

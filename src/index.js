@@ -5,15 +5,22 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import './index.css';
 import 'semantic-ui-css/semantic.min.css';
+
 import App from './containers/App.js';
 import registerServiceWorker from './registerServiceWorker';
 
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import createSagaMiddleware from 'redux-saga'
 
 import reducer from './reducers';
+import  authSaga  from './sagas/login';
 
-let store = createStore(reducer, applyMiddleware(Logger));
+const sagaMiddleware = createSagaMiddleware();
+
+let store = createStore(reducer, applyMiddleware(Logger), applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(authSaga);
 
 render(
   <Provider store={store}>

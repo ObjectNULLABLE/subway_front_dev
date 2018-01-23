@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { fetchUser } from '../actions/auth';
+import { connect } from 'react-redux';
 
 import '../App.css';
 
-import { Menu, Button, Header, Modal, Form } from 'semantic-ui-react';
+import { Menu, Button, Header, Modal } from 'semantic-ui-react';
 import LoginForm from '../components/login-form';
 
 
-export default class HeaderPanel extends Component {
+class HeaderPanel extends Component {
 
   constructor(props) {
     super(props);
@@ -15,6 +17,7 @@ export default class HeaderPanel extends Component {
     this.state = {
       isLoginModalOpen: false
     };
+    this.onLoginSubmit = this.onLoginSubmit.bind(this);
   }
 
   handleOpen = () => {
@@ -24,6 +27,11 @@ export default class HeaderPanel extends Component {
   handleClose = () => {
     this.setState({ isLoginModalOpen: false });
   };
+
+  onLoginSubmit(credentials) {
+    this.props.fetchUser(credentials.email, credentials.password);
+    this.handleClose();
+  }
 
   renderLoginDialog() {
     return (
@@ -35,23 +43,7 @@ export default class HeaderPanel extends Component {
       >
         <Modal.Header>Log-in to your account</Modal.Header>
         <Modal.Content>
-          {/* <Form size='large'>
-            <Form.Input
-              fluid
-              icon='user'
-              iconPosition='left'
-              placeholder='E-mail address'
-            />
-            <Form.Input
-              fluid
-              icon='lock'
-              iconPosition='left'
-              placeholder='Password'
-              type='password'
-            />
-            <Button color='teal' fluid size='large' onClick={this.handleClose} >Login</Button>
-          </Form> */}
-          <LoginForm handleClose={this.handleClose} buttonColor='teal' />
+          <LoginForm onLoginSubmit={this.onLoginSubmit} buttonColor='teal' />
         </Modal.Content>
       </Modal>
     )
@@ -97,3 +89,5 @@ export default class HeaderPanel extends Component {
     )
   }
 }
+
+export default connect(null, { fetchUser })(HeaderPanel)

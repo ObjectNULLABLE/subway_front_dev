@@ -18,7 +18,7 @@ class App extends Component {
         {/* <Route path="/events" component={Events} />
             <Route path="/gallery" component={Gallery} />
             <Route path="/about" component={About} /> */}
-        <Route path="/registration" component={RegForm}/>
+        <Route path="/registration" component={RegForm} />
       </div>
     );
   }
