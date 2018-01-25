@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+import { Grid } from 'semantic-ui-react';
 
 import '../App.css';
 
 import HomePage from '../components/home-page';
-import Menu from '../components/menu'
+import Menu from '../components/menu';
 import HeaderPanel from './header-panel';
-import RegForm from './registration-form';
+import RegistrationPage from './registration-page';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <HeaderPanel />
-        <Route exact path="/" component={HomePage} />
-        <Route path="/menu" component={Menu} />
-        {/* <Route path="/events" component={Events} />
+      <Grid centered>
+        <Grid.Row>
+          <Grid.Column>
+            <HeaderPanel />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/menu" component={Menu} />
+          {/* <Route path="/events" component={Events} />
             <Route path="/gallery" component={Gallery} />
             <Route path="/about" component={About} /> */}
-        <Route path="/registration" component={RegForm} />
-      </div>
+          <Route path="/registration" component={RegistrationPage} />
+        </Grid.Row>
+      </Grid>
     );
   }
 }
