@@ -5,15 +5,20 @@ export const setUser = name => ({
   name
 });
 
-export const fetchUser = (email, password) => ({
+export const fetchUser = (username, password) => ({
   type: types.FETCH_USER,
-  email,
+  username,
   password
 });
 
-export const getUser = userID => ({
+export const getUser = token => ({
   type: types.GET_USER,
-  userID
+  token
+});
+
+export const signupUser = userCreds => ({
+  type: types.SIGNUP_USER,
+  ...userCreds
 });
 
 export const purgeUser = () => ({

@@ -1,11 +1,14 @@
 import axios from 'axios';
 import apiConstants from '../constants/api-constants';
 
-class ApiFetcher { //TODO rework fetcher!
+class ApiFetcher {
+  //TODO rework fetcher!
   constructor() {
     this.options = {
       baseURL: apiConstants.hostUrl,
+      mode: 'no-cors',
       headers: {
+        Authorization: '',
         'Content-Type': 'application/json'
       }
     };
@@ -26,10 +29,10 @@ class ApiFetcher { //TODO rework fetcher!
   authenticate() {
     //this function will get token from local storage, set it to http header in axios options
     //and return the instance of axios, like in constructor above
-    const token = localStorage.getItem('myToken');
+    const token = localStorage.getItem('token');
     if (!token) throw Error('not authorized');
     const options = { ...this.options };
-    options.headers.Authorization = 'JWT ' + token;
+    options.headers.Authorization = 'Bearer ' + token;
 
     let instance = axios.create(options);
     return instance;

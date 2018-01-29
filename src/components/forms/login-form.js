@@ -5,7 +5,7 @@ export default class LoginForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { email: '', password: '' };
+    this.state = { username: '', password: '' };
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value });
@@ -17,9 +17,9 @@ export default class LoginForm extends Component {
           fluid
           icon="user"
           iconPosition="left"
-          placeholder="E-mail address"
-          name="email"
-          value={this.state.email}
+          placeholder="Username"
+          name="username"
+          value={this.state.username}
           onChange={this.handleChange}
         />
 

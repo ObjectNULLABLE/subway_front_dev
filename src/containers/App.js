@@ -15,10 +15,10 @@ class App extends Component {
       <Grid centered>
         <Grid.Row>
           <Grid.Column>
-            <HeaderPanel />
+            <HeaderPanel buttonColor="teal" />
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row>
+        <Grid.Row style={{ marginTop: '5em' }}>
           <Route exact path="/" component={HomePage} />
           <Route path="/menu" component={Menu} />
           {/* <Route path="/events" component={Events} />
