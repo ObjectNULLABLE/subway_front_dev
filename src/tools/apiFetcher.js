@@ -6,9 +6,7 @@ class ApiFetcher {
   constructor() {
     this.options = {
       baseURL: apiConstants.hostUrl,
-      mode: 'no-cors',
       headers: {
-        Authorization: '',
         'Content-Type': 'application/json'
       }
     };

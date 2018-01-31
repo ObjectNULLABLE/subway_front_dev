@@ -1,5 +1,5 @@
 import React from 'react';
-import Logger from 'redux-logger'
+import Logger from 'redux-logger';
 import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -11,16 +11,20 @@ import registerServiceWorker from './registerServiceWorker';
 
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import createSagaMiddleware from 'redux-saga'
+import createSagaMiddleware from 'redux-saga';
 
 import reducer from './reducers';
-import  authSaga  from './sagas/login';
+import rootSaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
-let store = createStore(reducer, applyMiddleware(Logger), applyMiddleware(sagaMiddleware));
+let store = createStore(
+  reducer,
+  applyMiddleware(Logger),
+  applyMiddleware(sagaMiddleware)
+);
 
-sagaMiddleware.run(authSaga);
+sagaMiddleware.run(rootSaga);
 
 render(
   <Provider store={store}>
@@ -28,5 +32,6 @@ render(
       <App />
     </Router>
   </Provider>,
-  document.getElementById('root'));
+  document.getElementById('root')
+);
 registerServiceWorker();

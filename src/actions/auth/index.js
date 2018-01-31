@@ -5,8 +5,8 @@ export const setUser = name => ({
   name
 });
 
-export const fetchUser = (username, password) => ({
-  type: types.FETCH_USER,
+export const fetchUserToken = (username, password) => ({
+  type: types.FETCH_USER_TOKEN,
   username,
   password
 });
@@ -16,8 +16,8 @@ export const getUser = token => ({
   token
 });
 
-export const signupUser = userCreds => ({
-  type: types.SIGNUP_USER,
+export const signUpUser = userCreds => ({
+  type: types.SIGN_UP_USER,
   ...userCreds
 });
 

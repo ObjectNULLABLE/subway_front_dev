@@ -5,7 +5,7 @@ import { Grid } from 'semantic-ui-react';
 import '../App.css';
 
 import HomePage from '../components/home-page';
-import Menu from '../components/menu';
+import Menu from '../containers/menu';
 import HeaderPanel from './header-panel';
 import RegistrationPage from './registration-page';
 
@@ -18,7 +18,7 @@ class App extends Component {
             <HeaderPanel buttonColor="teal" />
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row style={{ marginTop: '5em' }}>
+        <Grid.Row columns="1" style={{ marginTop: '5em' }}>
           <Route exact path="/" component={HomePage} />
           <Route path="/menu" component={Menu} />
           {/* <Route path="/events" component={Events} />
