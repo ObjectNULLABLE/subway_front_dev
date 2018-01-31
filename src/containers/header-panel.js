@@ -67,7 +67,7 @@ class HeaderPanel extends Component {
 
   render() {
     return (
-      <Menu fixed="top" color="orange" size="huge">
+      <Menu fixed="top" secondary color="orange" size="huge">
         <Container>
           <Menu.Item header as={Link} to="/">
             <Header color="teal" size="huge">
