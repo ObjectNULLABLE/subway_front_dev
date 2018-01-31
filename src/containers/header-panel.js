@@ -5,7 +5,14 @@ import { connect } from 'react-redux';
 
 import '../App.css';
 
-import { Menu, Button, Header, Modal, Dropdown, Container } from 'semantic-ui-react';
+import {
+  Menu,
+  Button,
+  Header,
+  Modal,
+  Dropdown,
+  Container
+} from 'semantic-ui-react';
 import LoginForm from '../components/forms/login-form';
 
 class HeaderPanel extends Component {
@@ -13,14 +20,15 @@ class HeaderPanel extends Component {
     super(props);
 
     this.state = {
-      isLoginModalOpen: false,
+      isLoginModalOpen: false
     };
 
     this.onLoginSubmit = this.onLoginSubmit.bind(this);
   }
 
   componentDidMount() {
-    if (localStorage.getItem('token')) this.props.getUser(localStorage.getItem('token'));
+    if (localStorage.getItem('token'))
+      this.props.getUser(localStorage.getItem('token'));
   }
 
   handleOpen = () => {
@@ -59,7 +67,7 @@ class HeaderPanel extends Component {
 
   render() {
     return (
-      <Menu fixed="top" secondary color="orange" size="huge">
+      <Menu fixed="top" color="orange" size="huge">
         <Container>
           <Menu.Item header as={Link} to="/">
             <Header color="teal" size="huge">
@@ -107,11 +115,18 @@ class HeaderPanel extends Component {
             <Menu.Menu position="right">
               <Menu.Item>
                 <Button.Group size="large">
-                  <Button onClick={this.handleOpen} color={this.props.buttonColor}>
+                  <Button
+                    onClick={this.handleOpen}
+                    color={this.props.buttonColor}
+                  >
                     Login
                   </Button>
                   <Button.Or />
-                  <Button as={Link} to="/registration" color={this.props.buttonColor}>
+                  <Button
+                    as={Link}
+                    to="/registration"
+                    color={this.props.buttonColor}
+                  >
                     Register
                   </Button>
                 </Button.Group>
@@ -133,5 +148,5 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
   fetchUserToken,
   getUser,
-  purgeUser,
+  purgeUser
 })(HeaderPanel);
