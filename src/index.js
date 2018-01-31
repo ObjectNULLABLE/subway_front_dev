@@ -1,24 +1,37 @@
 import React from 'react';
-import logger from 'redux-logger'
+import Logger from 'redux-logger';
 import { render } from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import './index.css';
+import 'semantic-ui-css/semantic.min.css';
+
 import App from './containers/App.js';
 import registerServiceWorker from './registerServiceWorker';
 
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import createSagaMiddleware from 'redux-saga';
 
 import reducer from './reducers';
-import { logIn, logOut } from './actions/auth'
+import rootSaga from './sagas';
 
-let store = createStore(reducer, applyMiddleware(logger));
+const sagaMiddleware = createSagaMiddleware();
 
-store.dispatch(logIn('eugen', 13));
-store.dispatch(logOut());
+let store = createStore(
+  reducer,
+  applyMiddleware(Logger),
+  applyMiddleware(sagaMiddleware)
+);
+
+sagaMiddleware.run(rootSaga);
 
 render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </Provider>,
-  document.getElementById('root'));
+  document.getElementById('root')
+);
 registerServiceWorker();

@@ -1,25 +1,30 @@
-import * as types from '../actions/auth/types'
+import * as types from '../actions/auth/types';
 
 const initialState = {
-  username: null,
-  id: null
+  name: null,
+  id: null,
+  userLoggedIn: false
 };
 
 export const user = (state = initialState, action) => {
   switch (action.type) {
-
-    case types.AUTH_LOGIN:
+    case types.SET_USER:
       return {
+        ...state,
         id: action.id,
-        username: action.username
-      }
+        name: action.name,
+        userLoggedIn: true
+      };
 
-    case types.AUTH_LOGOUT:
+    case types.PURGE_USER:
       return {
+        ...state,
         id: null,
-        username: null
-      }
-      
-    default: return state;
+        name: null,
+        userLoggedIn: false
+      };
+
+    default:
+      return state;
   }
 };

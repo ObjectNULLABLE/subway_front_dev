@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
-import * as auth from './auth';
+import { user } from './auth';
+import { food } from './food';
 
-export default combineReducers(auth);
+export default combineReducers({ user, food });
