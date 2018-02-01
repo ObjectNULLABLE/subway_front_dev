@@ -4,6 +4,7 @@ import { Grid, Segment } from 'semantic-ui-react';
 
 import { fetchFood } from '../actions/food';
 import FoodList from '../components/food-list';
+import FoodFilter from '../components/food-filter';
 
 class Menu extends Component {
   // constructor(props) {
@@ -24,6 +25,9 @@ class Menu extends Component {
     return (
       <Segment raised color="teal">
         <Grid padded>
+          <Grid.Column width={4}>
+            <FoodFilter />
+          </Grid.Column>
           <Grid.Column width={12}>
             <FoodList foodList={this.props.food.foodArray} />
           </Grid.Column>
