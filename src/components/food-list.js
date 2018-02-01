@@ -6,7 +6,7 @@ export default class FoodList extends Component {
   render() {
     const foodList = this.props.foodList;
     return (
-      <Grid padded>
+      <Grid>
         {foodList ? (
           foodList.map(mappingItem => (
             <FoodCard key={mappingItem.id} foodData={mappingItem} />

@@ -22,11 +22,13 @@ class Menu extends Component {
 
   render() {
     return (
-      <Grid.Column width="15">
-        <Segment raised color="teal">
-          <FoodList foodList={this.props.food.foodArray} />
-        </Segment>
-      </Grid.Column>
+      <Segment raised color="teal">
+        <Grid padded>
+          <Grid.Column width={12}>
+            <FoodList foodList={this.props.food.foodArray} />
+          </Grid.Column>
+        </Grid>
+      </Segment>
     );
   }
 }

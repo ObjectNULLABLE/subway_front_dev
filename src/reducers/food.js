@@ -9,7 +9,7 @@ export const food = (state = initialState, action) => {
     case types.SET_FOOD:
       return {
         ...state,
-        foodArray: [...state.foodArray, ...action.foodArray]
+        foodArray: action.foodArray
       };
 
     // case value:

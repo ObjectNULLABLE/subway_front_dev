@@ -5,7 +5,7 @@ import { setFood } from '../../actions/food';
 import * as types from '../../actions/food/types';
 
 export function* fetchFood() {
-  const { data } = yield ApiFetcher.get('/food');
+  const { data } = yield ApiFetcher.get('http://localhost:8080/food');
   yield put(setFood(data));
 }
 

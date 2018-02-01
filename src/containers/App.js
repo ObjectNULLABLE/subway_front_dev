@@ -19,12 +19,14 @@ class App extends Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row columns="1" style={{ marginTop: '5em' }}>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/menu" component={Menu} />
-          {/* <Route path="/events" component={Events} />
+          <Grid.Column width="15">
+            <Route exact path="/" component={HomePage} />
+            <Route path="/menu" component={Menu} />
+            {/* <Route path="/events" component={Events} />
             <Route path="/gallery" component={Gallery} />
             <Route path="/about" component={About} /> */}
-          <Route path="/registration" component={RegistrationPage} />
+            <Route path="/registration" component={RegistrationPage} />
+          </Grid.Column>
         </Grid.Row>
       </Grid>
     );
