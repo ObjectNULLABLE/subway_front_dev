@@ -18,17 +18,15 @@ class RegistrationPage extends Component {
 
   render() {
     return (
-      <Grid.Column width="15">
-        <Segment color="teal" raised>
-          <Grid padded centered>
-            <Grid.Row>
-              <Grid.Column width="5">
-                <RegDataForm onSignUpClick={this.onSignUpClick} />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Segment>
-      </Grid.Column>
+      <Segment color="teal" raised>
+        <Grid padded centered>
+          <Grid.Row>
+            <Grid.Column width="5">
+              <RegDataForm onSignUpClick={this.onSignUpClick} />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Segment>
     );
   }
 }
