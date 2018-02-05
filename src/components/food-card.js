@@ -41,7 +41,10 @@ export default class FoodCard extends Component {
               </Grid.Column>
               <Grid.Column width="5" floated="right">
                 <Button fluid color="teal" animated="fade">
-                  <Button.Content content={this.props.foodData.price} visible />
+                  <Button.Content
+                    content={this.props.foodData.price + ' $'}
+                    visible
+                  />
                   <Button.Content content="Add to Cart!" hidden />
                 </Button>
               </Grid.Column>
