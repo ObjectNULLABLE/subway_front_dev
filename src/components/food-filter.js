@@ -24,7 +24,7 @@ export default class FoodFilter extends Component {
           <Menu.Item
             key={mappingCategory.key}
             as={Link}
-            to={`/menu?category=${mappingCategory.key}`}
+            to={'?' + QueryString.stringify({ category: mappingCategory.key })}
             replace
             name={mappingCategory.key}
             content={mappingCategory.name}
