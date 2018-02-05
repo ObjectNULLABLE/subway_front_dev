@@ -8,16 +8,6 @@ import FoodList from '../components/food-list';
 import FoodFilter from '../components/food-filter';
 
 class Menu extends Component {
-  // constructor(props) {
-  //   super(props);
-
-  // this.state = {
-  //   isLoginModalOpen: false,
-  // };
-
-  // this.onLoginSubmit = this.onLoginSubmit.bind(this);
-  // }
-
   componentWillMount() {
     this.props.fetchFood();
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Menu, Input } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import { categorys } from '../constants/api-constants';
+import { categorys } from '../constants/categorys';
 import QueryString from 'query-string';
 
 export default class FoodFilter extends Component {
@@ -22,12 +22,13 @@ export default class FoodFilter extends Component {
       <Menu fluid vertical pointing secondary>
         {categorys.map(mappingCategory => (
           <Menu.Item
-            key={categorys.indexOf(mappingCategory)}
+            key={mappingCategory.key}
             as={Link}
-            to={`/menu?category=${mappingCategory}`}
+            to={`/menu?category=${mappingCategory.key}`}
             replace
-            name={mappingCategory}
-            active={this.state.activeItem === mappingCategory}
+            name={mappingCategory.key}
+            content={mappingCategory.name}
+            active={this.state.activeItem === mappingCategory.key}
             onClick={this.handleItemClick}
           />
         ))}
