@@ -1,11 +1,11 @@
 import axios from 'axios';
-import apiConstants from '../constants/api-constants';
+import { urls } from '../constants/api-constants';
 
 class ApiFetcher {
   //TODO rework fetcher!
   constructor() {
     this.options = {
-      baseURL: apiConstants.hostUrl,
+      baseURL: urls.hostUrl,
       headers: {
         'Content-Type': 'application/json'
       }

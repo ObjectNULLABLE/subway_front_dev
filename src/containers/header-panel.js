@@ -67,7 +67,7 @@ class HeaderPanel extends Component {
 
   render() {
     return (
-      <Menu fixed="top" color="orange" size="huge">
+      <Menu fixed="top" size="huge">
         <Container>
           <Menu.Item header as={Link} to="/">
             <Header color="teal" size="huge">
@@ -76,7 +76,11 @@ class HeaderPanel extends Component {
           </Menu.Item>
 
           <Menu.Item>
-            <Button as={Link} to="/menu" color={this.props.buttonColor}>
+            <Button
+              as={Link}
+              to="/menu?category=all"
+              color={this.props.buttonColor}
+            >
               Menu
             </Button>
           </Menu.Item>

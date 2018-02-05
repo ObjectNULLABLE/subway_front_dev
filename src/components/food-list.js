@@ -5,6 +5,7 @@ import FoodCard from './food-card';
 export default class FoodList extends Component {
   render() {
     const foodList = this.props.foodList;
+    console.log(this.props);
     return (
       <Grid>
         {foodList ? (

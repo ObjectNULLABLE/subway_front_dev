@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Segment } from 'semantic-ui-react';
+import foodArrayFilter from '../tools/food-array-filter';
 
 import { fetchFood } from '../actions/food';
 import FoodList from '../components/food-list';
@@ -26,10 +27,15 @@ class Menu extends Component {
       <Segment raised color="teal">
         <Grid padded>
           <Grid.Column width={4}>
-            <FoodFilter />
+            <FoodFilter query={this.props.location.search} />
           </Grid.Column>
           <Grid.Column width={12}>
-            <FoodList foodList={this.props.food.foodArray} />
+            <FoodList
+              foodList={foodArrayFilter(
+                this.props.location.search,
+                this.props.food.foodArray
+              )}
+            />
           </Grid.Column>
         </Grid>
       </Segment>
