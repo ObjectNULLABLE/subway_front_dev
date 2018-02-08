@@ -41,7 +41,7 @@ export default class LoginForm extends Component {
           onClick={() => {
             this.props.onLoginSubmit(this.state);
           }}
-          content="Login"
+          content="Sign in"
         />
       </Form>
     );
