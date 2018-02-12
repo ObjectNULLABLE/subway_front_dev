@@ -116,10 +116,21 @@ class HeaderPanel extends Component {
                 Cart
               </Button>
             </Menu.Item>
+            <Menu.Item>
+              <Button as={Link} to="/tracks" color={this.props.buttonColor}>
+                Traks
+              </Button>
+            </Menu.Item>
 
             {this.props.user.userLoggedIn ? (
               <Menu.Item position="right">
-                <Dropdown text={this.props.user.name} button simple>
+                <Dropdown
+                  as={Link}
+                  to="/current"
+                  text={this.props.user.name}
+                  button
+                  simple
+                >
                   <Dropdown.Menu>
                     <Dropdown.Item content="Cart" />
                     <Dropdown.Item content="Options" />

@@ -9,6 +9,8 @@ import Menu from '../containers/menu';
 import HeaderPanel from './header-panel';
 import RegistrationPage from './registration-page';
 import Cart from './cart';
+import UserProfile from './user-profile';
+import Traks from './tracks';
 
 export default class App extends Component {
   render() {
@@ -21,14 +23,17 @@ export default class App extends Component {
         </Grid.Row>
         <Grid.Row columns="1">
           <Grid.Column width="15">
-            <Segment color="teal">
+            <Segment color="teal" style={{ minHeight: '50em' }}>
               <Route exact path="/" component={HomePage} />
               <Route path="/menu" component={Menu} />
               <Route path="/cart" component={Cart} />
+              <Route path="/tracks" component={Traks} />{' '}
+              {/*TODO check component*/}
               {/* <Route path="/events" component={Events} />
               <Route path="/gallery" component={Gallery} />
               <Route path="/about" component={About} /> */}
               <Route path="/registration" component={RegistrationPage} />
+              <Route path="/current" component={UserProfile} />
             </Segment>
           </Grid.Column>
         </Grid.Row>

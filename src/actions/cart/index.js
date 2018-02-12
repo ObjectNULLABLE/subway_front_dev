@@ -11,6 +11,7 @@ export const removeFromCart = foodId => ({
   foodId
 });
 
-export const approveCart = () => ({
-  type: types.APPROVE_CART
+export const approveCart = order => ({
+  type: types.APPROVE_CART,
+  order
 });
