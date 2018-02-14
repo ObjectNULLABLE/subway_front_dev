@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
-import { Image, Grid, Label, Header, Input } from 'semantic-ui-react';
+import { Button, Image, Grid, Label, Header, Input } from 'semantic-ui-react';
 
 export default class Cart extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { descriptionVisible: false };
-  }
-
-  handleDescriptionClick = (e, titleProps) => {
-    this.state.descriptionVisible
-      ? this.setState({ descriptionVisible: false })
-      : this.setState({ descriptionVisible: true });
+  onRemoveClick = (e, { fkey, amount }) => {
+    this.props.onRemoveClick(fkey, amount);
   };
 
   render() {
@@ -48,14 +40,15 @@ export default class Cart extends Component {
 
         <Grid.Column verticalAlign="middle" textAlign="center" width={2}>
           {(this.props.amount * this.props.foodData.price).toFixed(2)}
-          <Label
-            as="a"
-            color="red"
-            attached="top right"
-            size="small"
-            icon="trash"
-          />
         </Grid.Column>
+        <Button
+          color="red"
+          size="small"
+          icon="trash"
+          fkey={this.props.foodData.key}
+          amount={this.props.amount}
+          onClick={this.onRemoveClick}
+        />
       </Grid.Row>
     );
   }

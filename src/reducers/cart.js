@@ -29,14 +29,29 @@ export const cart = (state = initialState, action) => {
       };
     }
 
-    case types.REMOVE_FROM_CART:
-      return {
-        ...state,
-        inCartItems: state.inCartItems.splice(
-          state.inCartItems.indexOf(action.foodId),
-          1
-        )
-      };
+    case types.REMOVE_FROM_CART: {
+      let inCartItems = state.inCartItems.map(item => ({
+        ...item
+      }));
+
+      for (let index = 0; index < inCartItems.length; index++) {
+        if (
+          inCartItems[index].food.key === action.foodKey &&
+          inCartItems[index].amount > action.amount
+        ) {
+          inCartItems[index].amount -= action.amount;
+          return {
+            inCartItems
+          };
+        } else {
+          inCartItems.splice(inCartItems.indexOf(inCartItems[index]), 1);
+
+          return {
+            inCartItems
+          };
+        }
+      }
+    }
 
     default:
       return state;

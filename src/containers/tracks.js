@@ -2,56 +2,36 @@ import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 
 class Tracks extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      hoursArray: [
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+        '18:00',
+        '19:00',
+        '20:00',
+        '21:00',
+        '22:00',
+        '23:00',
+        '24:00'
+      ]
+    };
+  }
+
   render() {
     return (
-      <Grid>
-        <Grid.Row>
-          <Grid.Column>1</Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column>2</Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column>3</Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column>4</Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column>5</Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column>6</Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column>7</Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column>8</Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column>9</Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column>10</Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column>11</Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column>12</Grid.Column>
-        </Grid.Row>
+      <Grid divided="vertically">
+        {this.state.hoursArray.map(mappingHour => (
+          <Grid.Row key={mappingHour}>
+            <Grid.Column>{mappingHour}</Grid.Column>
+          </Grid.Row>
+        ))}
       </Grid>
     );
   }

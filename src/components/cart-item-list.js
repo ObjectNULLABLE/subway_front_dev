@@ -3,6 +3,10 @@ import { Grid } from 'semantic-ui-react';
 import CartItem from './cart-item';
 
 export default class CartItemList extends Component {
+  onRemoveClick = (foodKey, amount) => {
+    this.props.onRemoveClick(foodKey, amount);
+  };
+
   render() {
     return (
       <Grid centered>
@@ -11,6 +15,7 @@ export default class CartItemList extends Component {
             key={mappingItem.food.key}
             foodData={mappingItem.food}
             amount={mappingItem.amount}
+            onRemoveClick={this.onRemoveClick}
           />
         ))}
       </Grid>

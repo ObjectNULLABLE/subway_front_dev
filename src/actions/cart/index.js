@@ -6,9 +6,10 @@ export const addToCart = (food, amount) => ({
   amount
 });
 
-export const removeFromCart = foodId => ({
+export const removeFromCart = (foodKey, amount) => ({
   type: types.REMOVE_FROM_CART,
-  foodId
+  foodKey,
+  amount
 });
 
 export const approveCart = order => ({

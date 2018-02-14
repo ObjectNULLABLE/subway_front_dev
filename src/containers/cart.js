@@ -19,6 +19,10 @@ class Cart extends Component {
     this.props.approveCart(cartToSend);
   };
 
+  onRemoveClick = (foodKey, amount) => {
+    this.props.removeFromCart(foodKey, amount);
+  };
+
   render() {
     return (
       <div>
@@ -43,7 +47,10 @@ class Cart extends Component {
 
             <Grid.Row>
               <Grid.Column>
-                <CartItemList inCartItems={this.props.cart.inCartItems} />
+                <CartItemList
+                  onRemoveClick={this.onRemoveClick}
+                  inCartItems={this.props.cart.inCartItems}
+                />
               </Grid.Column>
             </Grid.Row>
 
