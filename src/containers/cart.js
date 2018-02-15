@@ -19,8 +19,12 @@ class Cart extends Component {
     this.props.approveCart(cartToSend);
   };
 
-  onRemoveClick = (foodKey, amount) => {
+  removeFromCart = (foodKey, amount) => {
     this.props.removeFromCart(foodKey, amount);
+  };
+
+  addToCart = (food, amount) => {
+    this.props.addToCart(food, amount);
   };
 
   render() {
@@ -31,7 +35,7 @@ class Cart extends Component {
         this.props.cart.inCartItems.length > 0 ? (
           <Grid centered divided="vertically">
             <Grid.Row verticalAlign="middle" divided>
-              <Grid.Column width={8}>
+              <Grid.Column width={6}>
                 <Header as="h4" content="List of products" />
               </Grid.Column>
               <Grid.Column width={2}>
@@ -48,7 +52,8 @@ class Cart extends Component {
             <Grid.Row>
               <Grid.Column>
                 <CartItemList
-                  onRemoveClick={this.onRemoveClick}
+                  addToCart={this.addToCart}
+                  removeFromCart={this.removeFromCart}
                   inCartItems={this.props.cart.inCartItems}
                 />
               </Grid.Column>

@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
-import { Button, Image, Grid, Label, Header, Input } from 'semantic-ui-react';
+import { Button, Image, Grid, Label, Header } from 'semantic-ui-react';
 
 export default class Cart extends Component {
-  onRemoveClick = (e, { fkey, amount }) => {
-    this.props.onRemoveClick(fkey, amount);
+  onDeleteClick = (e, { foodkey, amount }) => {
+    this.props.removeFromCart(foodkey, amount);
+  };
+
+  onMinusClick = (e, { foodkey }) => {
+    this.props.removeFromCart(foodkey, 1);
+  };
+
+  onPlusClick = (e, { food }) => {
+    this.props.addToCart(food, 1);
   };
 
   render() {
     return (
       <Grid.Row divided centered>
-        <Grid.Column width={8}>
+        <Grid.Column width={7}>
           <Grid>
             <Grid.Column width={5}>
               <Image size="tiny" src={this.props.foodData.img_src} />
@@ -25,30 +33,33 @@ export default class Cart extends Component {
         </Grid.Column>
 
         <Grid.Column verticalAlign="middle" textAlign="center" width={2}>
-          <Input
-            labelPosition="right"
-            size="mini"
-            type="text"
-            fluid
-            defaultValue={this.props.amount}
-          >
-            <Label basic icon="minus" />
-            <input />
-            <Label basic icon="plus" />
-          </Input>
+          <Label
+            icon="minus"
+            foodkey={this.props.foodData.key}
+            onClick={this.onMinusClick}
+          />
+          <Label content={this.props.amount} />
+          <Label
+            icon="plus"
+            food={this.props.foodData}
+            onClick={this.onPlusClick}
+          />
         </Grid.Column>
 
         <Grid.Column verticalAlign="middle" textAlign="center" width={2}>
           {(this.props.amount * this.props.foodData.price).toFixed(2)}
         </Grid.Column>
-        <Button
-          color="red"
-          size="small"
-          icon="trash"
-          fkey={this.props.foodData.key}
-          amount={this.props.amount}
-          onClick={this.onRemoveClick}
-        />
+
+        <Grid.Column>
+          <Button
+            color="red"
+            size="small"
+            icon="trash"
+            foodkey={this.props.foodData.key}
+            amount={this.props.amount}
+            onClick={this.onDeleteClick}
+          />
+        </Grid.Column>
       </Grid.Row>
     );
   }

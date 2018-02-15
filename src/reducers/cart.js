@@ -43,7 +43,7 @@ export const cart = (state = initialState, action) => {
           return {
             inCartItems
           };
-        } else {
+        } else if (inCartItems[index].food.key === action.foodKey) {
           inCartItems.splice(inCartItems.indexOf(inCartItems[index]), 1);
 
           return {
@@ -51,6 +51,7 @@ export const cart = (state = initialState, action) => {
           };
         }
       }
+      break;
     }
 
     default:
