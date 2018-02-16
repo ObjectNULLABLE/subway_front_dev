@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signUpUser } from '../actions/auth';
 
-import { Segment, Grid } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 
 import RegDataForm from '../components/forms/reg-data-form';
 
@@ -18,15 +18,13 @@ class RegistrationPage extends Component {
 
   render() {
     return (
-      <Segment color="teal" raised>
-        <Grid padded centered>
-          <Grid.Row>
-            <Grid.Column width="5">
-              <RegDataForm onSignUpClick={this.onSignUpClick} />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Segment>
+      <Grid padded centered>
+        <Grid.Row>
+          <Grid.Column width="5">
+            <RegDataForm onSignUpClick={this.onSignUpClick} />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 }

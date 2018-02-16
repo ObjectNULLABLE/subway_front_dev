@@ -12,8 +12,11 @@ export const food = (state = initialState, action) => {
         foodArray: action.foodArray
       };
 
-    // case value:
-    //   break;
+    case types.PURGE_FOOD:
+      return {
+        ...state,
+        foodArray: []
+      };
 
     default:
       return state;

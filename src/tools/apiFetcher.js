@@ -30,7 +30,7 @@ class ApiFetcher {
     const token = localStorage.getItem('token');
     if (!token) throw Error('not authorized');
     const options = { ...this.options };
-    options.headers.Authorization = 'Bearer ' + token;
+    options.headers.Authorization = token;
 
     let instance = axios.create(options);
     return instance;

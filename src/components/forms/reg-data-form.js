@@ -69,7 +69,7 @@ export default class RegDataForm extends Component {
         <Button
           color="teal"
           size="large"
-          content="Sign up"
+          content="Join subway"
           fluid
           onClick={() => {
             this.props.onSignUpClick(this.state);
