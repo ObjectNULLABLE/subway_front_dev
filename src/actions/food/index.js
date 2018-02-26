@@ -8,3 +8,7 @@ export const setFood = foodArray => ({
   type: types.SET_FOOD,
   foodArray
 });
+
+export const purgeFood = () => ({
+  type: types.PURGE_FOOD
+});

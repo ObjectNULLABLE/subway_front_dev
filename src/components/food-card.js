@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Image, Grid, Button, Card } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { addToCart } from '../actions/cart';
 
-export default class FoodCard extends Component {
+class FoodCard extends Component {
   constructor(props) {
     super(props);
 
@@ -18,10 +20,19 @@ export default class FoodCard extends Component {
     }
   };
 
+  addToCartClick = () => {
+    this.props.addToCart(this.props.foodData, this.state.ordered);
+  };
+
   render() {
     return (
       <Grid.Column mobile="16" computer="8">
-        <Card raised fluid>
+        <Card
+          link
+          raised
+          fluid
+          style={{ maxHeight: '31em', overflow: 'hidden' }}
+        >
           <div style={{ height: '18em', overflow: 'hidden' }}>
             <Image src={this.props.foodData.img_src} />
           </div>
@@ -40,7 +51,12 @@ export default class FoodCard extends Component {
                 </Button.Group>
               </Grid.Column>
               <Grid.Column width="5" floated="right">
-                <Button fluid color="teal" animated="fade">
+                <Button
+                  fluid
+                  color="teal"
+                  animated="fade"
+                  onClick={this.addToCartClick}
+                >
                   <Button.Content
                     content={this.props.foodData.price + ' $'}
                     visible
@@ -55,3 +71,5 @@ export default class FoodCard extends Component {
     );
   }
 }
+
+export default connect(null, { addToCart })(FoodCard);

@@ -10,7 +10,7 @@ export default class FoodList extends Component {
       <Grid>
         {foodList ? (
           foodList.map(mappingItem => (
-            <FoodCard key={mappingItem.id} foodData={mappingItem} />
+            <FoodCard key={mappingItem.key} foodData={mappingItem} />
           ))
         ) : (
           <div>{'empty'}</div>
