@@ -17,7 +17,7 @@ import {
 
 import LoginForm from '../components/forms/login-form';
 
-class HeaderPanel extends Component {
+export class HeaderPanel extends Component {
   constructor(props) {
     super(props);
 
