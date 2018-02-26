@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Embed, Grid } from 'semantic-ui-react';
 
-export default class HomePage extends Component {
+export class HomePage extends Component {
   render() {
     return (
       <Grid.Column width="12">
+        <p>Hello world</p>
         <Embed
           autoplay={false}
           color="white"
