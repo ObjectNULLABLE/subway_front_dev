@@ -1,0 +1,6 @@
+export const FETCH_TRACKS = 'FETCH_TRACKS';
+export const OCCUPY_TRACKS = 'OCCUPY_TRACKS';
+export const RELEASE_TRACKS = 'RELEASE_TRACKS';
+export const ORDER_TRACKS = 'ORDER_TRAKS';
+export const SET_TRACKS = 'SET_TRACKS';
+export const SET_OCCUPYED_TRACKS = 'SET_OCCUPYED_TRACKS';
