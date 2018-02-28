@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Embed, Grid } from 'semantic-ui-react';
 
-export class HomePage extends Component {
+export default class HomePage extends Component {
   render() {
     return (
       <Grid.Column width="12">
