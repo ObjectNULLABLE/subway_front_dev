@@ -1,3 +1,3 @@
 export const urls = {
-  hostUrl: 'http://192.168.93.253:8080'
+  hostUrl: 'https://subwaydevelop.herokuapp.com/'
 };
