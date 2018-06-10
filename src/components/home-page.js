@@ -6,11 +6,11 @@ export default class HomePage extends Component {
     return (
       <Grid.Column width="12">
         <Embed
-          autoplay={false}
-          color="white"
+          autoplay
           aspectRatio="16:9"
           hd={true}
-          id="gJscrxxl_Bg"
+          id="CACAmH4r1fw"
+          placeholder="https://img.youtube.com/vi/CACAmH4r1fw/maxresdefault.jpg"
           iframe={{
             allowFullScreen: true,
             style: {
