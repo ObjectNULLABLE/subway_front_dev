@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { Form, Button } from 'semantic-ui-react';
+import React, { Component } from "react";
+import { Form, Button, Divider } from "semantic-ui-react";
 
 export default class LoginForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { username: '', password: '' };
+    this.state = { username: "", password: "" };
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value });
@@ -43,6 +43,19 @@ export default class LoginForm extends Component {
           }}
           content="Sign in"
         />
+
+        <Divider horizontal section>
+          {"or enter with"}
+        </Divider>
+
+        <Button
+          color="google plus"
+          icon="google"
+          onClick={this.props.onGoogleLogin}
+        />
+        <Button color="facebook" icon="facebook" />
+        <Button color="vk" icon="vk" />
+        <Button color="blue" icon="telegram" />
       </Form>
     );
   }

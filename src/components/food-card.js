@@ -1,7 +1,16 @@
-import React, { Component } from 'react';
-import { Image, Grid, Button, Card } from 'semantic-ui-react';
-import { connect } from 'react-redux';
-import { addToCart } from '../actions/cart';
+import React, { Component } from "react";
+import { Image, Grid, Button, Card } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { addToCart } from "../actions/cart";
+import { toastr } from "react-redux-toastr";
+
+let addToCartToastr = {
+  timeOut: 2000, // by setting to 0 it will prevent the auto close
+  position: 'bottom-left',
+  preventDuplicates: false,
+  showCloseButton: false, // true by default
+  // this option will give you a func 'remove' as props
+};
 
 class FoodCard extends Component {
   constructor(props) {
@@ -22,6 +31,11 @@ class FoodCard extends Component {
 
   addToCartClick = () => {
     this.props.addToCart(this.props.foodData, this.state.ordered);
+    toastr.info(
+      "New item was added to cart",
+      `+ ${this.state.ordered} positions of "${this.props.foodData.title}"`,
+      addToCartToastr
+    );
   };
 
   render() {
@@ -31,13 +45,13 @@ class FoodCard extends Component {
           link
           raised
           fluid
-          style={{ maxHeight: '31em', overflow: 'hidden' }}
+          style={{ maxHeight: "31em", overflow: "hidden" }}
         >
-          <div style={{ height: '18em', overflow: 'hidden' }}>
+          <div style={{ height: "18em", overflow: "hidden" }}>
             <Image src={this.props.foodData.img_src} />
           </div>
           <Card.Content
-            style={{ height: '11em', overflow: 'hidden' }}
+            style={{ height: "11em", overflow: "hidden" }}
             header={this.props.foodData.title}
             description={this.props.foodData.description}
           />
@@ -58,7 +72,7 @@ class FoodCard extends Component {
                   onClick={this.addToCartClick}
                 >
                   <Button.Content
-                    content={this.props.foodData.price + ' $'}
+                    content={this.props.foodData.price + " $"}
                     visible
                   />
                   <Button.Content content="Add to Cart!" hidden />
@@ -72,4 +86,7 @@ class FoodCard extends Component {
   }
 }
 
-export default connect(null, { addToCart })(FoodCard);
+export default connect(
+  null,
+  { addToCart }
+)(FoodCard);

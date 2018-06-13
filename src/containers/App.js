@@ -11,8 +11,9 @@ import RegistrationPage from "./registration-page";
 import Cart from "./cart";
 import UserProfile from "./user-profile";
 import Traks from "./tracks";
+import Footer from "../components/footer";
 
-import back from "../IMG_3223.jpg";
+import back from "../IMG_1045.jpg";
 
 const backgroundStyle = {
   background: `url(${back}) center top no-repeat`,
@@ -25,17 +26,17 @@ export default class App extends Component {
     return (
       <Grid centered style={backgroundStyle}>
         <Grid.Row>
-          <Grid.Column>
+          <Grid.Column width="15">
             <HeaderPanel buttonColor="teal" />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column width="15">
+          <Grid.Column width="12">
             <Segment
               color="teal"
               style={{
                 minHeight: "50em",
-                background: "rgba(255, 255, 255, 0.95)"
+                background: "rgba(255, 240, 230, 0.95)"
               }}
             >
               <Route exact path="/" component={HomePage} />
@@ -48,6 +49,11 @@ export default class App extends Component {
               <Route path="/registration" component={RegistrationPage} />
               <Route path="/current" component={UserProfile} />
             </Segment>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row style={{ padding: "0" }}>
+          <Grid.Column>
+            <Footer />
           </Grid.Column>
         </Grid.Row>
       </Grid>

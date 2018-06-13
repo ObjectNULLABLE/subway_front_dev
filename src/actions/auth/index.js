@@ -1,4 +1,4 @@
-import * as types from './types';
+import * as types from "./types";
 
 export const setUser = name => ({
   type: types.SET_USER,
@@ -19,6 +19,10 @@ export const getUser = token => ({
 export const signUpUser = userCreds => ({
   type: types.SIGN_UP_USER,
   ...userCreds
+});
+
+export const googleSignUp = () => ({
+  type: types.GOOGLE_SIGN_UP
 });
 
 export const purgeUser = () => ({

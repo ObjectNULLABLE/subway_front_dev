@@ -4,7 +4,7 @@ import { Embed, Grid } from 'semantic-ui-react';
 export default class HomePage extends Component {
   render() {
     return (
-      <Grid.Column width="12">
+      <Grid.Column>
         <Embed
           autoplay
           aspectRatio="16:9"

@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { fetchUserToken, getUser, purgeUser } from "../actions/auth";
+import {
+  fetchUserToken,
+  getUser,
+  purgeUser,
+  googleSignUp
+} from "../actions/auth";
 import { connect } from "react-redux";
 
 import "../App.css";
 
-import {
-  Menu,
-  Button,
-  Header,
-  Modal,
-  Dropdown
-} from "semantic-ui-react";
+import { Menu, Button, Header, Modal, Dropdown } from "semantic-ui-react";
 
 import LoginForm from "../components/forms/login-form";
 
@@ -24,6 +23,7 @@ class HeaderPanel extends Component {
     };
 
     this.onLoginSubmit = this.onLoginSubmit.bind(this);
+    this.onGoogleLogin = this.onGoogleLogin.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +44,10 @@ class HeaderPanel extends Component {
     this.handleClose();
   }
 
+  onGoogleLogin() {
+    this.props.googleSignUp();
+  }
+
   onLogoutClick = () => {
     this.props.purgeUser();
     localStorage.clear();
@@ -59,7 +63,11 @@ class HeaderPanel extends Component {
       >
         <Modal.Header>Sign In to your account</Modal.Header>
         <Modal.Content>
-          <LoginForm onLoginSubmit={this.onLoginSubmit} buttonColor="teal" />
+          <LoginForm
+            onLoginSubmit={this.onLoginSubmit}
+            onGoogleLogin={this.onGoogleLogin}
+            buttonColor="teal"
+          />
         </Modal.Content>
       </Modal>
     );
@@ -71,9 +79,10 @@ class HeaderPanel extends Component {
     return (
       <Menu
         fixed={fixed ? "top" : null}
-        size="huge"
+        size="massive"
         borderless
         secondary
+        style={{ paddingTop: "2%" }}
       >
         <Menu.Item header as={Link} to="/">
           <Header color="teal" size="huge">
@@ -121,11 +130,7 @@ class HeaderPanel extends Component {
 
         {this.props.user.userLoggedIn ? (
           <Menu.Item position="right">
-            <Dropdown
-              text={this.props.user.name}
-              button
-              simple
-            >
+            <Dropdown text={this.props.user.name} button simple>
               <Dropdown.Menu>
                 <Dropdown.Item content="Cart" />
                 <Dropdown.Item content="Options" />
@@ -173,6 +178,7 @@ export default connect(
   {
     fetchUserToken,
     getUser,
-    purgeUser
+    purgeUser,
+    googleSignUp
   }
 )(HeaderPanel);
