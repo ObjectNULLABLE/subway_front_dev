@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-import React, { Component } from 'react';
-import { Grid } from 'semantic-ui-react';
-=======
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Grid, Button } from "semantic-ui-react";
@@ -12,41 +8,12 @@ import moment from "moment";
 import { fetchTracks, occupyTracks, releaseTracks } from "../actions/track";
 
 import "react-datepicker/dist/react-datepicker.css";
->>>>>>> Stashed changes
 
 class Tracks extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-<<<<<<< Updated upstream
-      hoursArray: [
-        '12:00',
-        '13:00',
-        '14:00',
-        '15:00',
-        '16:00',
-        '17:00',
-        '18:00',
-        '19:00',
-        '20:00',
-        '21:00',
-        '22:00',
-        '23:00',
-        '24:00'
-      ]
-    };
-  }
-
-  render() {
-    return (
-      <Grid divided="vertically">
-        {this.state.hoursArray.map(mappingHour => (
-          <Grid.Row key={mappingHour}>
-            <Grid.Column>{mappingHour}</Grid.Column>
-          </Grid.Row>
-        ))}
-=======
       orderDate: moment("10.06.2018.", "DD.MM.YYYY.")
     };
 
@@ -132,15 +99,11 @@ class Tracks extends Component {
             <Button fluid content="Reserve traks" size="large" />
           </Grid.Column>
         </Grid.Row>
->>>>>>> Stashed changes
       </Grid>
     );
   }
 }
 
-<<<<<<< Updated upstream
-export default Tracks;
-=======
 function mapStateToProps(state) {
   return {
     tracks: state.tracks,
@@ -156,4 +119,3 @@ export default connect(
     releaseTracks
   }
 )(Tracks);
->>>>>>> Stashed changes
